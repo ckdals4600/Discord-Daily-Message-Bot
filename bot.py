@@ -3,7 +3,7 @@ import os
 from discord.ext import commands, tasks
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
-from datetime import date
+from datetime import date, datetime
 
 DISCORD_CHANNEL_ID = os.getenv('DISCORD_CHANNEL_ID')
 DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
@@ -31,7 +31,7 @@ async def on_ready():
     scheduler = AsyncIOScheduler()
     scheduler.add_job(send_message, CronTrigger(hour="13", minute="00"))
     channel = bot.get_channel(DISCORD_CHANNEL_ID)
-    nowTime = date.now().strftime("%Y년 %m월 %d일")
+    nowTime = datetime.now().strftime("%Y년 %m월 %d일")
     await channel.send(f"{nowTime} 테스트")
     scheduler.start()
 
