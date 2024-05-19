@@ -10,7 +10,7 @@ DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-def make_msg():
+def make_msg():    
     today = date.today()
     today_str = str(today.year) + "년 " + str(today.month) + "월 " \
         + str(today.day) + "일"
@@ -30,6 +30,9 @@ def make_msg():
 async def on_ready():    
     scheduler = AsyncIOScheduler()
     scheduler.add_job(send_message, CronTrigger(hour="13", minute="00"))
+    channel = bot.get_channel(DISCORD_CHANNEL_ID)
+    nowTime = date.now().strftime("%Y년 %m월 %d일")
+    await channel.send(f"{nowTime} 테스트")
     scheduler.start()
 
 async def send_message():
