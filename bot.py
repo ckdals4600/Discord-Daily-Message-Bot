@@ -6,7 +6,8 @@ from apscheduler.triggers.cron import CronTrigger
 from datetime import date, datetime
 
 DISCORD_CHANNEL_ID = os.getenv('DISCORD_CHANNEL_ID')
-DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
+DISCORD_BOT_TOKEN = int(os.getenv('DISCORD_BOT_TOKEN'))
+
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix='!', intents=intents)
 
@@ -32,7 +33,8 @@ async def on_ready():
     scheduler.add_job(send_message, CronTrigger(hour="13", minute="00"))
     channel = bot.get_channel(DISCORD_CHANNEL_ID)
     nowTime = datetime.now().strftime("%Y년 %m월 %d일")
-    await channel.send(f"{nowTime} 테스트")
+    text = f"{nowTime} 테스트"
+    await channel.send(text)
     scheduler.start()
 
 async def send_message():
