@@ -5,9 +5,8 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from datetime import date, datetime
 
-DISCORD_CHANNEL_ID = os.getenv('DISCORD_CHANNEL_ID')
-DISCORD_BOT_TOKEN = int(os.getenv('DISCORD_BOT_TOKEN'))
-
+DISCORD_CHANNEL_ID = int(os.getenv('DISCORD_CHANNEL_ID'))
+DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix='!', intents=intents)
 
