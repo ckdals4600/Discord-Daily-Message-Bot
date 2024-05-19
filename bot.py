@@ -28,7 +28,7 @@ def make_msg():
     return msg
 
 def start_msg():
-    nowTime = datetime.now().time().strftime('%H:%M:%S')
+    nowTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     return f"{nowTime} 봇 시작"
 
 @bot.event
