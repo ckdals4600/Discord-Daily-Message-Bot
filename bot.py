@@ -16,7 +16,7 @@ def make_msg():
     today_str = str(today.year) + "년 " + str(today.month) + "월 " \
         + str(today.day) + "일"
     next_str = str(today.year) + "년 " + str(today.month) + "월 " \
-        + str(today.day) + "일"
+        + str(today.day+1) + "일"
 
     msg = today_str +" Daily Scrum 입니다.\n" \
         + "작성 기한 : "+ today_str + " 22:00:00 ~ " + next_str + " 10:00:00\n"\
